@@ -1,29 +1,37 @@
-# euros
-[![](https://img.shields.io/badge/pypi-v1.0-blue)](https://pypi.org/project/euros/)
+# frdate
+[![](https://img.shields.io/badge/pypi-v0.1-blue)](https://pypi.org/project/frdate/)
 
-Converts any amount of euros from numbers into letters, using Python.
-
-**Languages available :**
-- french (fr)
-- italian (it)
-- english UK (en)
+This python functions discovers a date object underneath the input, and returns it in french.
 
 **Installation :**
 ```python
-pip install euros
+pip install frdate
 ```
 
 **Examples:**
 
 ```python
->>> from euros import fr,it,en
+>>> from frdate import conv
 
->>> fr.conv(120.99)
-"cent vingt euros et quatre-vingt-dix-neuf centimes"
+>>> conv('14071789')
+"14 juillet 1789"
 
->>> it.conv(23.81)
-"ventitré euro e ottantuno centesimi"
+>>> conv('17890714',to_date=True)
+"datetime.date(1789, 7, 14)"
 
->>> en.conv(1215.55)
-"one thousand, two hundred and fifteen euros and fifty-five cents"
+>>> conv('1789-07-14',litteral=True)
+"quatorze juillet mille sept cent quatre-vingt-neuf"
 ```
+
+**Supported formats :**
+
+The input can be a datetime.date or datetime.datetime object, or any string written in the following formats:
+- YYYYMMDD
+- DDMMYYYY
+- YYYY-MM-DD
+- YYYY/MM/DD
+- YYYY MM DD
+- DD MM YYYY
+- DD/MM/YYYY
+- DD-MM-YYYY
+- ...
