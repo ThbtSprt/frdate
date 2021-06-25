@@ -25,7 +25,7 @@ pip install frdate
 
 **Supported formats :**
 
-The input can be a datetime.date or datetime.datetime object, or any string written in the following formats:
+The input can be a datetime.date or datetime.datetime object, or any string representing a date:
 - YYYYMMDD
 - DDMMYYYY
 - YYYY-MM-DD
