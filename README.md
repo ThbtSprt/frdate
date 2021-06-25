@@ -1,7 +1,7 @@
 # frdate
 [![](https://img.shields.io/badge/pypi-v0.1-blue)](https://pypi.org/project/frdate/)
 
-This python functions discovers a date object underneath the input, and returns it in french.
+Finds a date object in a string input, and returns it in french.
 
 **Installation :**
 ```python
