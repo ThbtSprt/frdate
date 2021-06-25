@@ -13,7 +13,7 @@ def autofind(x,y,z):
         else:
             return dmy(x,y,z)
     elif int(x[:4])>1000 and int(x[4:6])<=12 and int(x[6:])<=31:
-        return dmy(x,y,z)
+        return ymd(x,y,z)
 
 def dmy(x,to_date,litteral):
     if to_date == True:
