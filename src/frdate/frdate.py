@@ -7,13 +7,13 @@ jour_l = ['','premier']+[ltr(str(n)) for n in range(2,32)]
 mois = ['','janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 
 def autofind(x,y,z):
-    if int(x[0:2])<=31 and int(x[2:4])<=12 and int(x[4:])>1000:
-        if int(x[:4])>1000 and int(x[4:6])<=12 and int(x[6:])<=31:
-            return ymd(x,y,z)
-        else:
+    if int(x[:4])>1000 and int(x[4:6])<=12 and int(x[6:])<=31:
+        if int(x[0:2])<=31 and int(x[2:4])<=12 and int(x[4:])>1000: #En cas d'ambiguïté de la date saisie (ex : 10101212 peut aussi bien être le 10 octobre 1212 ou le 12 décembre 1010, on fait ici le choix de privilégier l'hypothèse du format DDMMYYYY, plus probable en français 
             return dmy(x,y,z)
-    elif int(x[:4])>1000 and int(x[4:6])<=12 and int(x[6:])<=31:
-        return ymd(x,y,z)
+        else:
+            return ymd(x,y,z)
+    elif int(x[0:2])<=31 and int(x[2:4])<=12 and int(x[4:])>1000:
+        return dmy(x,y,z)
 
 def dmy(x,to_date,litteral):
     if to_date == True:
