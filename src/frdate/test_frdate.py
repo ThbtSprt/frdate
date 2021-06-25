@@ -1,4 +1,5 @@
 from frdate import frdate
+import datetime
 
 d='14 juillet 1789'
 echantillon=[
