@@ -55,7 +55,7 @@ def conv(input,to_date=False,litteral=False):
             if y[0] == '1er':
                 y[0]='01'
             elif y[0] in jour_l:
-                y[0]=jour_l.index(y[0])
+                y[0]=str(jour_l.index(y[0]))
         if len(y[0])==1:
             y[0]='0'+y[0]
 
