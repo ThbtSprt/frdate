@@ -8,7 +8,7 @@ mois = ['','janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'ao
 
 def autofind(x,y,z):
     if int(x[:4])>1000 and int(x[4:6])<=12 and int(x[6:])<=31:
-        if int(x[0:2])<=31 and int(x[2:4])<=12 and int(x[4:])>1000: #En cas d'ambiguïté de la date saisie (ex : 10101212 peut aussi bien être le 10 octobre 1212 ou le 12 décembre 1010, on fait ici le choix de privilégier l'hypothèse du format DDMMYYYY, plus probable en français 
+        if int(x[0:2])<=31 and int(x[2:4])<=12 and int(x[4:])>1000: #En cas d'ambiguïté de la date saisie (ex : 10101212 peut aussi bien être le 10 octobre 1212 ou le 12 décembre 1010, on fait ici le choix de privilégier l'hypothèse du format DDMMYYYY, plus probable en français
             return dmy(x,y,z)
         else:
             return ymd(x,y,z)
@@ -49,8 +49,16 @@ def conv(input,to_date=False,litteral=False):
             return dmy(z,to_date,litteral)
         elif len(z)==6:
             return dmy(z[:4]+'20'+z[4:],to_date,litteral)
-    elif type(x) == str and re.match(r'^\d+\s[a-zA-Z]+\s\d+$',x):
+    elif type(x) == str and re.match(r'^\S+\s[a-zA-Z]+\s\d+$',x):
         y = re.split(r'\s',x)
+        if not re.match(r'^\d+$',y[0]):
+            if y[0] == '1er':
+                y[0]='01'
+            elif y[0] in jour_l:
+                y[0]=jour_l.index(y[0])
+        if len(y[0])==1:
+            y[0]='0'+y[0]
+
         if y[1] in mois:
             m = str(mois.index(y[1]))
             if len(m)==1:
