@@ -21,3 +21,4 @@ def test_fr_conv():
   for t in echantillon:
     assert frdate.conv(t) == d1
     assert frdate.conv(t,True) == d2
+  assert frdate.conv(echantillon) == [d1 for i in range(len(echantillon))]

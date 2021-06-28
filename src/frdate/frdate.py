@@ -49,7 +49,7 @@ def conv(input,to_date=False,litteral=False):
             return dmy(z,to_date,litteral)
         elif len(z)==6:
             return dmy(z[:4]+'20'+z[4:],to_date,litteral)
-    elif type(x) == str and re.match(r'^\S+\s[a-zA-Z]+\s\d+$',x):
+    elif type(x) == str and re.match(r'^\S+\s[éa-zA-Z]+\s\d+$',x):
         y = re.split(r'\s',x)
         if not re.match(r'^\d+$',y[0]):
             if y[0] == '1er':
@@ -64,6 +64,19 @@ def conv(input,to_date=False,litteral=False):
             if len(m)==1:
                 m='0'+m
             return dmy(y[0]+m+y[2],to_date,litteral)
+        else:
+            return x
+    elif type(x) == dict:
+        for i in x:
+            if 'date' in i:
+                x[i] = conv(x[i],to_date,litteral)
+        return x
+    elif type(x) == list:
+        for i in range(len(x)):
+            x[i] = conv(x[i],to_date,litteral)
+        return x
+    else:
+        return x
 
 if __name__ == '__main__':
     result=conv(str(input('Saisissez la date à convertir :')))
