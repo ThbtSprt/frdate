@@ -1,5 +1,5 @@
 # frdate
-[![](https://img.shields.io/badge/pypi-v0.2-blue)](https://pypi.org/project/frdate/)
+[![](https://img.shields.io/badge/pypi-v0.3-blue)](https://pypi.org/project/frdate/)
 
 Finds a date object in a string input, and returns it in french.
 
@@ -25,13 +25,4 @@ pip install frdate
 
 **Supported formats :**
 
-The input can be a datetime.date or datetime.datetime object, or any string representing a date:
-- YYYYMMDD
-- DDMMYYYY
-- YYYY-MM-DD
-- YYYY/MM/DD
-- YYYY MM DD
-- DD MM YYYY
-- DD/MM/YYYY
-- DD-MM-YYYY
-- ...
+The input can be a datetime.date or datetime.datetime object, or any string representing a date, or a list or dict of strings
