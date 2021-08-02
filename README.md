@@ -1,5 +1,5 @@
 # frdate
-[![](https://img.shields.io/badge/pypi-v0.3-blue)](https://pypi.org/project/frdate/)
+[![](https://img.shields.io/badge/pypi-v0.4-blue)](https://pypi.org/project/frdate/)
 
 Finds a date object in a string input, and returns it in french.
 

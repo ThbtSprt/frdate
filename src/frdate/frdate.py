@@ -49,7 +49,7 @@ def conv(input,to_date=False,litteral=False):
             return dmy(z,to_date,litteral)
         elif len(z)==6:
             return dmy(z[:4]+'20'+z[4:],to_date,litteral)
-    elif type(x) == str and re.match(r'^\S+\s[éa-zA-Z]+\s\d+$',x):
+    elif type(x) == str and re.match(r'^\S+\s[éûa-zÉÛA-Z]+\s\d+$',x):
         y = re.split(r'\s',x)
         if not re.match(r'^\d+$',y[0]):
             if y[0] == '1er':
