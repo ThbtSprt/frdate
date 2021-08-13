@@ -1,5 +1,5 @@
 # frdate
-[![](https://img.shields.io/badge/pypi-v0.4-blue)](https://pypi.org/project/frdate/)
+[![](https://img.shields.io/badge/pypi-v0.5-blue)](https://pypi.org/project/frdate/)
 
 Finds a date object in a string input, and returns it in french.
 
@@ -8,21 +8,36 @@ Finds a date object in a string input, and returns it in french.
 pip install frdate
 ```
 
-**Examples:**
+**Usage :**
 
-```python
->>> from frdate.frdate import conv as d
+The main method of this package is `conv()`
 
->>> d('14071789')
-"14 juillet 1789"
-
->>> d('17890714',to_date=True)
-"datetime.date(1789, 7, 14)"
-
->>> d('1789-07-14',litteral=True)
-"quatorze juillet mille sept cent quatre-vingt-neuf"
-```
+It takes one mandatory argument (the input to convert) and two optional boolean args :
+- to_date (default = False) : set to True if you need to convert the input into a `datetime.date()` object
+- litteral (default = False) : set to True if you need to convert the input into a string object only using letters
 
 **Supported formats :**
 
-The input may be a datetime.date or datetime.datetime object, or any string representing a date, or a list or dict of strings
+The input can be :
+- a datetime.date object
+- a datetime.datetime object
+- a string representing a date, in any format,
+- a list of the above elements
+
+**Examples:**
+
+```python
+>>> from frdate import conv
+
+>>> conv('14071789')
+"14 juillet 1789"
+
+>>> conv('17890714',to_date=True)
+"datetime.date(1789, 7, 14)"
+
+>>> conv('1789-07-14',litteral=True)
+"quatorze juillet mille sept cent quatre-vingt-neuf"
+
+>>> conv(['01/01/2000','2000-01-01',date(2000,1,1)])
+['1er janvier 2000','1er janvier 2000','1er janvier 2000']
+```

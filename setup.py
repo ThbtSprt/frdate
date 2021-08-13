@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='frdate',
-      version='0.4',
+      version='0.5',
       description='From string input to french date',
       author='Thibaut Spriet',
       author_email='thibaut@spriet.online',

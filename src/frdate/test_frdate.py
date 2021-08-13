@@ -1,4 +1,4 @@
-from frdate import frdate
+from frdate import conv
 import datetime
 
 d1='14 juillet 1789'
@@ -14,11 +14,11 @@ echantillon=[
    ]
 
 def test_fr_conv():
-  assert frdate.conv('2000-01-01',litteral=True) == 'premier janvier deux mille'
-  assert frdate.conv('2000-01-01',True) == datetime.date(2000,1,1)
-  assert frdate.conv('2000-01-01') == '1er janvier 2000'
-  assert frdate.conv('10101212') == '10 octobre 1212'
+  assert conv('2000-01-01',litteral=True) == 'premier janvier deux mille'
+  assert conv('2000-01-01',True) == datetime.date(2000,1,1)
+  assert conv('2000-01-01') == '1er janvier 2000'
+  assert conv('10101212') == '10 octobre 1212'
   for t in echantillon:
-    assert frdate.conv(t) == d1
-    assert frdate.conv(t,True) == d2
-  assert frdate.conv(echantillon) == [d1 for i in range(len(echantillon))]
+    assert conv(t) == d1
+    assert conv(t,True) == d2
+  assert conv(echantillon) == [d1 for i in range(len(echantillon))]
