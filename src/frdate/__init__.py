@@ -10,33 +10,28 @@ def autofind(x,y,z):
     if int(x[:4])>1000 and int(x[4:6])<=12 and int(x[6:])<=31:
         if int(x[0:2])<=31 and int(x[2:4])<=12 and int(x[4:])>1000: #En cas d'ambiguïté de la date saisie (ex : 10101212 peut aussi bien être le 10 octobre 1212 ou le 12 décembre 1010, on fait ici le choix de privilégier l'hypothèse du format DDMMYYYY, plus probable en français
             return dmy(x,y,z)
-        else:
-            return ymd(x,y,z)
+        return ymd(x,y,z)
     elif int(x[0:2])<=31 and int(x[2:4])<=12 and int(x[4:])>1000:
         return dmy(x,y,z)
 
 def dmy(x,to_date,litteral):
-    if to_date == True:
+    if to_date:
         return date(int(x[4:]),int(x[2:4]),int(x[:2]))
-    elif litteral == True:
+    elif litteral:
         return jour_l[int(x[:2])]+' '+mois[int(x[2:4])]+' '+ltr(str(x[4:]))
-    else:
-        return jour[int(x[:2])]+' '+mois[int(x[2:4])]+' '+str(x[4:])
+    return jour[int(x[:2])]+' '+mois[int(x[2:4])]+' '+str(x[4:])
 
 def ymd(x,to_date,litteral):
-    if to_date == True:
+    if to_date:
         return date(int(x[:4]),int(x[4:6]),int(x[6:]))
-    elif litteral == True:
+    elif litteral:
         return jour_l[int(x[6:])]+' '+mois[int(x[4:6])]+' '+ltr(str(x[:4]))
-    else:
-        return jour[int(x[6:])]+' '+mois[int(x[4:6])]+' '+str(x[:4])
+    return jour[int(x[6:])]+' '+mois[int(x[4:6])]+' '+str(x[:4])
 
 def conv(input,to_date=False,litteral=False):
     x=input
     if isinstance(x,datetime) or isinstance(x,date):
-        if to_date == True:
-            return x
-        else:
+        if not to_date:
             return ymd(x.strftime('%Y%m%d'),False,litteral)
     elif type(x) == str and re.match(r'^\d*$',x) and len(x)==8:
         return autofind(x,to_date,litteral)
@@ -64,19 +59,14 @@ def conv(input,to_date=False,litteral=False):
             if len(m)==1:
                 m='0'+m
             return dmy(y[0]+m+y[2],to_date,litteral)
-        else:
-            return x
     elif type(x) == dict:
         for i in x:
             if 'date' in i:
                 x[i] = conv(x[i],to_date,litteral)
-        return x
     elif type(x) == list:
         for i in range(len(x)):
             x[i] = conv(x[i],to_date,litteral)
-        return x
-    else:
-        return x
+    return x
 
 if __name__ == '__main__':
     result=conv(str(input('Saisissez la date à convertir :')))
