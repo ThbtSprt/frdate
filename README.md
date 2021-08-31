@@ -1,10 +1,10 @@
 # frdate
 [![](https://img.shields.io/badge/pypi-v0.5-blue)](https://pypi.org/project/frdate/)
 
-Finds a date object in a string input, and returns it in french.
+Date conversion (from numbers to letters or from letters to date object), in french.
 
 **Installation :**
-```python
+```bash
 pip install frdate
 ```
 
@@ -27,17 +27,17 @@ The input can be :
 **Examples:**
 
 ```python
->>> from frdate import conv
+from frdate import conv
 
->>> conv('14071789')
-"14 juillet 1789"
+conv('14071789')
+#'14 juillet 1789'
 
->>> conv('17890714',to_date=True)
-"datetime.date(1789, 7, 14)"
+conv('17890714',to_date=True)
+#datetime.date(1789, 7, 14)
 
->>> conv('1789-07-14',litteral=True)
-"quatorze juillet mille sept cent quatre-vingt-neuf"
+conv('1789-07-14',litteral=True)
+#'quatorze juillet mille sept cent quatre-vingt-neuf'
 
->>> conv(['01/01/2000','2000-01-01',date(2000,1,1)])
-['1er janvier 2000','1er janvier 2000','1er janvier 2000']
+conv(['01/01/2000','2000-01-01',date(2000,1,1)])
+#['1er janvier 2000','1er janvier 2000','1er janvier 2000']
 ```
