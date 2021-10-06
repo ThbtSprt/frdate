@@ -1,5 +1,7 @@
 # frdate
-[![](https://img.shields.io/badge/pypi-v0.6-blue)](https://pypi.org/project/frdate/)
+[![](https://img.shields.io/pypi/v/frdate)](https://pypi.org/project/frdate/)
+[![](https://img.shields.io/pypi/dm/frdate)](https://pypi.org/project/frdate/)
+[![](https://img.shields.io/github/languages/top/ThbtSprt/frdate)](https://github.com/ThbtSprt/frdate)
 
 Date conversion (from numbers to letters or from letters to date object), in french.
 
