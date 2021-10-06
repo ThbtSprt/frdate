@@ -2,6 +2,7 @@
 [![](https://img.shields.io/pypi/v/frdate)](https://pypi.org/project/frdate/)
 [![](https://img.shields.io/pypi/dm/frdate)](https://pypi.org/project/frdate/)
 [![](https://img.shields.io/github/languages/top/ThbtSprt/frdate)](https://github.com/ThbtSprt/frdate)
+[![](https://img.shields.io/librariesio/dependents/pypi/frdate)](https://github.com/ThbtSprt/frdate/network/dependents)
 
 Date conversion (from numbers to letters or from letters to date object), in french.
 
