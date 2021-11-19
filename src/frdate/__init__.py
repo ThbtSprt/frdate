@@ -13,20 +13,29 @@ def autofind(x,y,z):
         return ymd(x,y,z)
     elif int(x[0:2])<=31 and int(x[2:4])<=12 and int(x[4:])>1000:
         return dmy(x,y,z)
+    elif int(x[:4])>1000 and 31>=int(x[4:6])>12 and int(x[6:])<=12:
+        return ymd(x[:4]+x[6:]+x[4:6],y,z)
+    return x
 
 def dmy(x,to_date,litteral):
-    if to_date:
-        return date(int(x[4:]),int(x[2:4]),int(x[:2]))
-    elif litteral:
-        return jour_l[int(x[:2])]+' '+mois[int(x[2:4])]+' '+ltr(str(x[4:]))
-    return jour[int(x[:2])]+' '+mois[int(x[2:4])]+' '+str(x[4:])
+    try:
+        if to_date:
+            return date(int(x[4:]),int(x[2:4]),int(x[:2]))
+        elif litteral:
+            return jour_l[int(x[:2])]+' '+mois[int(x[2:4])]+' '+ltr(str(x[4:]))
+        return jour[int(x[:2])]+' '+mois[int(x[2:4])]+' '+str(x[4:])
+    except (IndexError,ValueError):
+        return autofind(x[:2]+x[4:]+x[2:4],to_date,litteral)
 
 def ymd(x,to_date,litteral):
-    if to_date:
-        return date(int(x[:4]),int(x[4:6]),int(x[6:]))
-    elif litteral:
-        return jour_l[int(x[6:])]+' '+mois[int(x[4:6])]+' '+ltr(str(x[:4]))
-    return jour[int(x[6:])]+' '+mois[int(x[4:6])]+' '+str(x[:4])
+    try:
+        if to_date:
+            return date(int(x[:4]),int(x[4:6]),int(x[6:]))
+        elif litteral:
+            return jour_l[int(x[6:])]+' '+mois[int(x[4:6])]+' '+ltr(str(x[:4]))
+        return jour[int(x[6:])]+' '+mois[int(x[4:6])]+' '+str(x[:4])
+    except (IndexError,ValueError):
+        return autofind(x[:4]+x[4:6]+x[6:],to_date,litteral)
 
 def conv(input,to_date=False,litteral=False):
     x=input

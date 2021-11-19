@@ -10,7 +10,9 @@ echantillon=[
   '14 07 1789',
   '14 juillet 1789',
   '1789-07-14',
-  'quatorze juillet 1789'
+  'quatorze juillet 1789',
+  '17891407',
+  '1789-14-07'
    ]
 
 def test_fr_conv():
